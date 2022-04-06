@@ -10,12 +10,17 @@
 
 <body>
     <div id="result"></div>
+
     <fieldset>
         <legend>Ajouter un ingrédient</legend>
         Nom : <input type="text" name="" id="name" /><br />
         Prix : <input type="number" name="" id="prix" /><br />
         Poids : <input type="number" name="" id="poids" /><br />
         <button>Ajouter</button>
+    </fieldset>
+    <fieldset>
+        <legend>Liste des ingrédients renseignés</legend>
+        updateIngredients();
     </fieldset>
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
@@ -37,11 +42,11 @@
                 });
         });
 
-        function updateUrls() {
+        function updateIngredients() {
             const result = document.querySelector("#result");
             result.innerHTML = "";
 
-            axios.get("/api/urls").then((response) => {
+            axios.get("/api/ingredients").then((response) => {
                 console.log(response.data);
 
                 response.data.forEach((element, index) => {
@@ -49,7 +54,7 @@
                     div.innerHTML = element.name;
                     div.addEventListener('click', () => {
                         axios.delete('/api/urls/' + index)
-                        updateUrls()
+                        updateIngredients()
                     })
                     result.appendChild(div)
                 });

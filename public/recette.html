@@ -7,28 +7,15 @@
     <title>Recette</title>
 </head>
 <body>
-
-    <p>NOM RECETTE</p>
-    <select id="NomRecette">
-        <option value="nom">Gateau au chocolat</option>
-        <option value="nom" selected>Gateau au fraise</option>
-        <option value="nom">Gateau au citron</option>
-    </select>
-    <p>DEROULE</p>
-    
-        <div id="deroule1">
-            200 g de chocolat pâtissier<br>
-            100 g de beurre + une noix <br>
-            pour le moule 100 g de sucre<br>
-             en poudre 3 oeufs<br>
-        </div>
-
-        <p>NOMBRE DE CONVIVES</p>
-        
-        <input type="number" id="nombre" />
-
-<br><br>
-    <button>Valider</button>
+    <h1>- Ajouter une recette</h1>
+    <fieldset>
+        <legend>Enregistrer une recette</legend>
+        Nom de la recette: <input type="text" name="" id="nameRecette" /><br />
+        Nombre de convives : <input type="number" name="" id="nbConvives" /><br />
+        Déroulé de la recette : <input type="textarea" name="" id="deroule" /><br />
+        <button>Ajouter la recette</button>
+    </fieldset>
+    <h1>- Recettes enregistrées</h1>
     
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> 
 <script>

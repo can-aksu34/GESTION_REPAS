@@ -40,7 +40,7 @@ app.get("/api/ingredients", (req, res) => {
 
 app.post("/api/ingredients", (req, res) => {
   const data={nom:req.body.name, prix:req.body.prix, poids:req.body.poids};
-  var sql = "INSERT INTO ingrédients (Nom, prix, poids) VALUES (?,?,?)"
+  var sql = "INSERT INTO ingredients (Nom, prix, poids) VALUES (?,?,?)"
 
 
 ///////////////////////RECETTE/////////////////////////:
