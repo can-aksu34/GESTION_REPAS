@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recette</title>
+</head>
+<body>
+
+    <p>NOM RECETTE</p>
+    <select id="NomRecette">
+        <option value="nom">Gateau au chocolat</option>
+        <option value="nom" selected>Gateau au fraise</option>
+        <option value="nom">Gateau au citron</option>
+    </select>
+    <p>DEROULE</p>
+    
+        <div id="deroule1">
+            200 g de chocolat pâtissier<br>
+            100 g de beurre + une noix <br>
+            pour le moule 100 g de sucre<br>
+             en poudre 3 oeufs<br>
+        </div>
+
+        <p>NOMBRE DE CONVIVES</p>
+        
+        <input type="number" id="nombre" />
+
+<br><br>
+    <button>Valider</button>
+    
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> 
+<script>
+        const button = document.querySelector("button");
+        const nameInput = document.querySelector("#nomRecette");
+        const prixInput = document.querySelector("#Deroule");
+        const poidsInput = document.querySelector("#nbConvive");
+
+
+</script>
+
+</body>
+</html>

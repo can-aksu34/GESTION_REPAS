@@ -1,0 +1,8 @@
+node .\index.js
+
+install axios ----------> pour envoyer donner formulaire
+
+
+
+Pour les id (faut mettre auto increment)
+
