@@ -20,22 +20,22 @@ var connection = mysql.createConnection({
 	database: "gestion_repas",
 });
 
-connection.connect(function(err) {
-   if (err) throw err;
-   console.log("Connecté à la base de données MySQL!");
-  connection.query("SELECT * from ingredients", function (err, result) {
-       if (err) throw err;
-       console.log(result);
-     });
- });
+// connection.connect(function(err) {
+//    if (err) throw err;
+//    console.log("Connecté à la base de données MySQL!");
+//   connection.query("SELECT * from ingredients", function (err, result) {
+//        if (err) throw err;
+//        console.log(result);
+//      });
+//  });
 
-app.get("/api/ingredients", (req, res) => {
-	connection.query("SELECT * FROM ingredients", (error, result) => {
-		if (error) throw error;
-		res.json(result);
-	});
+// app.get("/api/ingredients", (req, res) => {
+// 	connection.query("SELECT * FROM ingredients", (error, result) => {
+// 		if (error) throw error;
+// 		res.json(result);
+// 	});
 	
-});
+// });
 
 
 app.post("/api/ingredients", (req, res) => {
@@ -44,7 +44,14 @@ app.post("/api/ingredients", (req, res) => {
 
 
 ///////////////////////RECETTE/////////////////////////:
-
+connection.connect(function(err) {
+	if (err) throw err;
+	console.log("Connecté à la base de données MySQL!");
+   connection.query("SELECT * FROM recette", function (err, result) {
+		if (err) throw err;
+		console.log(result);
+	  });
+  });
 app.get("/api/recette", (req, res) => {
 	connection.query("SELECT * FROM recette", (error, result) => {
 		if (error) throw error;
@@ -53,22 +60,18 @@ app.get("/api/recette", (req, res) => {
 	
 });
 
-//app.post("/api/recette", (req, res) => {
-	//const data={nom:req.body.name, prix:req.body.prix, poids:req.body.poids};
 
 
 
 
 
-
-
-	connection.query(sql, [data.nom, data.prix, data.poids], function (error, result) {
-		if (error) throw error;
-    else{
-      console.log("Enregistrement reussie");
-    }
-	});
-});
+// 	connection.query(sql, [data.nom, data.prix, data.poids], function (error, result) {
+// 		if (error) throw error;
+//     else{
+//       console.log("Enregistrement reussie");
+//     }
+// 	});
+// });
 
 
 
