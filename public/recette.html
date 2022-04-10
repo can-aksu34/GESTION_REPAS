@@ -5,20 +5,74 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Recette</title>
+		<style>
+			label {
+				margin-top: 10px;
+				display: block;
+			}
+			h1 {
+				text-align: center;
+			}
+
+			input {
+				margin-top: 10px;
+				display: block;
+			}
+
+			input,
+			textarea,
+			select {
+				padding: 3px;
+				border: 1px solid #f5c5c5;
+				border-radius: 5px;
+				width: 200px;
+				box-shadow: 1px 1px 2px #c0c0c0 inset;
+			}
+
+			/* Choix des ingrédients */
+
+			button {
+				width: 100px;
+				margin-left: 5px;
+				box-shadow: 1px 1px 1px #d83f3d;
+				cursor: pointer;
+				margin-top: 3%;
+			}
+
+			#ajouterRecette {
+				margin-top: 3%;
+				margin-left: 48%;
+			}
+
+			#result input {
+				display: inline-block;
+			}
+
+			input[type="checkbox"]{
+				width: 20px;
+				height: 20px;
+			}
+		</style>
 	</head>
 	<body>
 		<h1>- Ajouter une recette</h1>
 		<fieldset>
 			<legend>Enregistrer une recette</legend>
-			Nom de la recette: <input type="text" name="" id="nameRecette" /><br />
-			Nombre de convives : <input type="number" name="" id="nbConvives" /><br />
-			Déroulé de la recette :
-			<input type="textarea" name="" id="deroule" /><br />
+			<label>Nom de la recette:</label>
+			<input type="text" name="" id="nameRecette" /><br />
+			<label>Nombre de convives :</label>
+			<input type="number" name="" id="nbConvives" /><br />
+			<label>Déroulé de la recette :</label>
+			<textarea name="" id="deroule" rows="5" cols="33"></textarea><br />
 			<button id="choixIngredient">Choisir des ingrédients</button>
 			<div id="result"></div>
 			<button id="ajouterRecette">Ajouter la recette</button>
 		</fieldset>
-        <button><a href="http://localhost:3000/ingredients.html">Créer les ingrédient manquants</a></button>
+		<button>
+			<a href="http://localhost:3000/ingredients.html"
+				>Créer les ingrédient manquants</a
+			>
+		</button>
 		<h1>- Recettes enregistrées</h1>
 
 		<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
@@ -41,6 +95,10 @@
 					});
 			});
 
+			buttonRecette.addEventListener("click", () => {
+				axios.post("/api/recette", {});
+			});
+
 			buttonIngredient.addEventListener("click", () => {
 				afficherIngredients();
 			});
@@ -56,14 +114,16 @@
 						const div = document.createElement("div");
 						const input = document.createElement("input");
 						const label = document.createElement("label");
+						const quantiteUnitaire = document.createElement("label");
 						const quantite = document.createElement("input");
 						label.innerHTML = element.Nom;
+						quantiteUnitaire.innerHTML = "Quantité unitaire : " + element.poids;
 						input.setAttribute("type", "checkbox");
 						quantite.setAttribute("type", "number");
 						div.appendChild(label);
-                        div.appendChild(quantite);
+						div.appendChild(quantiteUnitaire)
+						div.appendChild(quantite);
 						div.appendChild(input);
-						
 
 						// input.addEventListener('click', () => {
 						// const form = document.createElement("input")

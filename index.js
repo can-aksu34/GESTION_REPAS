@@ -67,10 +67,10 @@ app.post("/api/recette", (req, res) => {
 	const data = {
 		nomRecette: req.body.nameRecette,
 		nbConvives: req.body.nbConvives,
-		deroule: req.body.deroule
+		deroule: req.body.deroule,
 	};
 	var sql =
-		"INSERT INTO recette (NomRecette, Deroule, nbConvives) VALUES (?,?,?)";
+		"INSERT INTO recette (NomRecette, Deroule, nbConvives) VALUES (?,?,?);";
 	connection.query(
 		sql,
 		[data.nomRecette, data.deroule, data.nbConvives],
@@ -78,7 +78,7 @@ app.post("/api/recette", (req, res) => {
 			if (error) throw error;
 			else {
 				console.log("Enregistrement reussie");
-				res.send('ok!')
+				res.send("ok!");
 			}
 		}
 	);
