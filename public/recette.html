@@ -88,6 +88,7 @@
 		<script>
 			const buttonRecette = document.querySelector("#ajouterRecette");
 			const buttonIngredient = document.querySelector("#choixIngredient");
+			const buttonIngredientsRecette = document.querySelector("#ajouterIngredients")
 			const nameRecetteInput = document.querySelector("#nameRecette");
 			const nbConvivesInput = document.querySelector("#nbConvives");
 			const derouleInput = document.querySelector("#deroule");
@@ -103,9 +104,8 @@
 					.then((response) => {
 						console.log(response.data);
 					});
-
-					axios.post("/api/")
 			});
+
 
 			buttonRecette.addEventListener("click", () => {
 				axios.post("/api/recette", {});
@@ -116,8 +116,8 @@
 			});
 
 			buttonVoirRecettes.addEventListener("click", () => {
-					afficherRecettes();
-				});
+				afficherRecettes();
+			});
 
 			function afficherRecettes() {
 				const result = document.querySelector("#resultRecette");
@@ -128,7 +128,13 @@
 
 					response.data.forEach((element, index) => {
 						const div = document.createElement("div");
-						div.innerHTML = "Titre de la recette :  " + element.NomRecette + " / Déroulé de la recette : " +  element.Deroule + " / Nombre de convives : " + element.nbConvives;
+						div.innerHTML =
+							"Titre de la recette :  " +
+							element.NomRecette +
+							" / Déroulé de la recette : " +
+							element.Deroule +
+							" / Nombre de convives : " +
+							element.nbConvives;
 						resultRecette.appendChild(div);
 					});
 				});
@@ -141,15 +147,22 @@
 				axios.get("/api/ingredients").then((response) => {
 					console.log(response.data);
 
-					var cpt = 0;
+					var cpt = 1;
+					const ingredients = [];
 					response.data.forEach((element, index) => {
+						var id = "champ" + cpt
+						console.log(id)
 						const div = document.createElement("div");
 						const input = document.createElement("input");
 						const label = document.createElement("label");
 						const quantiteUnitaire = document.createElement("label");
+						const validerIngredient = document.createElement("button")
+						validerIngredient.setAttribute("id", id);
 						const quantite = document.createElement("input");
-						quantite.setAttribute("id", "quantiteIngredient" + cpt)
-						const quantiteInput = document.querySelector("#quantiteIngredient" + cpt);
+						quantite.setAttribute("id", "quantiteIngredient" + cpt);
+						const quantiteInput = document.querySelector(
+							"#quantiteIngredient" + cpt
+						);
 						label.innerHTML = element.Nom;
 						quantiteUnitaire.innerHTML = "Quantité unitaire : " + element.poids;
 						input.setAttribute("type", "checkbox");
@@ -158,6 +171,7 @@
 						div.appendChild(quantiteUnitaire);
 						div.appendChild(quantite);
 						div.appendChild(input);
+						div.appendChild(validerIngredient)
 						cpt = cpt + 1;
 
 						// input.addEventListener('click', () => {
