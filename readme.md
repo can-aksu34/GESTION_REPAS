@@ -32,6 +32,9 @@ Page servant à créer de nouveaux ingrédients, il y est possible de voir les i
 Page recettes :
 Page servant à créer de nouvelles recettes, il y est aussi possible de voir les recettes déjà existantes
 
+Page repas :
+Page servant à créer de nouveaux repas
+
 Actuellement, il est juste possible de créer des ingrédients et de consulter les ingrédients existants.
 Il est possible de créer des recettes, mais les ingrédients nécessaires à la recette ne sont pas enregistrés
 Il est possible de créer un repas en rensaignant la date et le nombres de convives mais sans pouvoir enregistrer les recettes choisies
