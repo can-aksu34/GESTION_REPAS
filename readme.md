@@ -19,6 +19,8 @@ api/ingredients
 
 api/recettes
 
+api/repas
+
 PAGES ET PRINCIPALES FONCTIONNALITEES DU PROJET :
 
 Page home : 
@@ -32,7 +34,7 @@ Page servant à créer de nouvelles recettes, il y est aussi possible de voir le
 
 Actuellement, il est juste possible de créer des ingrédients et de consulter les ingrédients existants.
 Il est possible de créer des recettes, mais les ingrédients nécessaires à la recette ne sont pas enregistrés
-Il est possible de créer un repas en resnsignat la date et le nombres de convives mais sans pouvoir enregistrer les recettes choisies
+Il est possible de créer un repas en rensaignant la date et le nombres de convives mais sans pouvoir enregistrer les recettes choisies
 
   
 
