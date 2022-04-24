@@ -92,15 +92,14 @@ app.listen(port, () => {
 
 app.post("/api/repas", (req, res) => {
 	const data = {
-		nomRecette: req.body.nameRecette,
-		nbConvives: req.body.nbConvives,
-		deroule: req.body.deroule,
+		DateRepas: req.body.date,
+		nbConvives: req.body.nbr,
 	};
 	var sql =
-		"INSERT INTO recette (NomRecette, Deroule, nbConvives) VALUES (?,?,?);";
+		"INSERT INTO repas (nbConvives, DateRepas) VALUES (?,?);";
 	connection.query(
 		sql,
-		[data.nomRecette, data.deroule, data.nbConvives],
+		[data.nbConvives, data.DateRepas],
 		function (error, result) {
 			if (error) throw error;
 			else {
