@@ -1,3 +1,6 @@
+Voici le lien GIT de notre projet :
+https://github.com/can-aksu34/GESTION_REPAS.git
+
 LISTE DES MEMBRES DU GROUPE :
 
 - Voici le projet de gestion de repas de :
