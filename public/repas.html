@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Les repas</title>
+	</head>
+
+	<body>
+		<fieldset style="width: 500px; height: 100px">
+			<legend>Affichage de Repas</legend>
+			Renseignez date de repas :
+			<input type="text" name="" id="name" placeholder="EX: 2022-04-23" /><br />
+			Pour combien de personne : <input type="number" name="" id="nbr" /><br />
+
+			<button id="choixRecettes">Choisir des recettes</button>
+			<div id="result"></div>
+		</fieldset>
+		<br />
+		<button>
+			<a href="http://localhost:3000/home.html">Revenir à l'accueil</a>
+		</button>
+
+		<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+		<script>
+			const button = document.querySelector("button");
+			const buttonRecettes = document.querySelector("#choixRecettes");
+			const nameInput = document.querySelector("#name");
+			const nbrInput = document.querySelector("#nbr");
+
+			button.addEventListener("click", () => {
+				axios
+					.post("/api/repas", {
+						name: nameInput.value,
+						nbr: nbrInput.value,
+						poids: poidsInput.value,
+					})
+					.then((response) => {
+						console.log(response.data);
+					});
+			});
+
+			buttonRecettes.addEventListener("click", () => {
+				afficherRecettes();
+			});
+
+			function afficherRecettes() {
+				const result = document.querySelector("#result");
+				result.innerHTML = "";
+
+				axios.get("/api/recette").then((response) => {
+					console.log(response.data);
+
+					var cpt = 1;
+					response.data.forEach((element, index) => {
+						var id = "champ" + cpt;
+						const div = document.createElement("div");
+						const input = document.createElement("input");
+						const label = document.createElement("label");
+						const quantiteUnitaire = document.createElement("label");
+						const validerRecette = document.createElement("button");
+						validerRecette.setAttribute("id", id);
+						label.innerHTML = element.Nom;
+						quantiteUnitaire.innerHTML =
+							"Nombre de personnes : " + element.poids;
+						input.setAttribute("type", "checkbox");
+						div.appendChild(label);
+						div.appendChild(quantiteUnitaire);
+						div.appendChild(input);
+						div.appendChild(validerRecette);
+						cpt = cpt + 1;
+						result.appendChild(div);
+					});
+				});
+			}
+		</script>
+	</body>
+</html>
